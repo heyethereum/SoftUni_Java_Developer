@@ -188,7 +188,7 @@ public class Question2 {
           if (health - points > 0) {
             System.out.printf("You have slayed a %s.%n", command);
           } else {
-            System.out.println("You died! Killed by boss.");
+            System.out.printf("You died! Killed by %s.%n", command);
             System.out.printf("Best room: %d", bestRoom);
             return;
           }
