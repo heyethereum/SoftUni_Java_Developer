@@ -38,3 +38,11 @@ main input[type="button"] {
   outline: none;
   cursor: pointer;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
