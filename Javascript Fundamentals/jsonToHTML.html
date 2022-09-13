@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FromJSONToHTMLTable</title>
+    <style>
+      table,
+      th {
+        border: groove;
+        border-collapse: collapse;
+      }
+
+      td {
+        border: 1px solid black;
+      }
+
+      td,
+      th {
+        padding: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper"></div>
+    <script>
+      function JsonToHtmlTable(studentData) {
+        // Write your code here
+        let arr = JSON.parse(studentData);
+        function escapeHTML(input) {
+          if (typeof input === "string") {
+            input = input.replace("&", "&amp;");
+            input = input.replace("<", "&lt;");
+            input = input.replace(">", "&gt;");
+          }
+          return input;
+        }
+        function makeKeyRow(obj) {
+          let keyRow = `<tr>`;
+
+          for (const key in obj) {
+            keyRow += `<th>${key}</th>`;
+          }
+          keyRow += `</tr>`;
+          outputArr.push(keyRow);
+        }
+        function makeValueRow(arr) {
+          let valueRow = "";
+
+          arr.forEach((element) => {
+            valueRow = `<tr>`;
+            for (const key in element) {
+              valueRow += `<td>${escapeHTML(element[key])}</td>`;
+            }
+            valueRow += `</tr>`;
+
+            outputArr.push(valueRow);
+          });
+        }
+
+        let outputArr = ["<table>"];
+        makeKeyRow(arr[0]);
+        makeValueRow(arr);
+        outputArr.push("</table>");
+
+        console.log(outputArr.join("\n"));
+        return outputArr;
+      }
+      window.onload = function () {
+        let container = document.getElementById("wrapper");
+        container.innerHTML = JsonToHtmlTable(
+          '[{"Name":"Peter <div>-a", "Age":20,"City":"London"}, {"Name":"George","Age":18,"City":"Liverpool"}, {"Name":"Tom","Age":18,"City":"Manchester"}]'
+        );
+      };
+    </script>
+  </body>
+</html>
