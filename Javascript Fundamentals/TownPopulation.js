@@ -6,9 +6,12 @@ function townPopulation(townData) {
     return town;
   }, {});
 
-  Object.entries(display).forEach(([key, value]) => {
+  /* Object.entries(display).forEach(([key, value]) => {
     console.log(`${key} : ${value}`);
-  });
+  }); */
+  for (let key in display) {
+    console.log(`${key} : ${display[key]}`);
+  }
 }
 /* townPopulation([
   "Bucharest <-> 1830000",
