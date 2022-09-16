@@ -27,6 +27,7 @@
       function JsonToHtmlTable(studentData) {
         // Write your code here
         let arr = JSON.parse(studentData);
+        console.log(arr[0]);
         function escapeHTML(input) {
           if (typeof input === "string") {
             input = input.replace("&", "&amp;");
@@ -64,7 +65,7 @@
         outputArr.push("</table>");
 
         console.log(outputArr.join("\n"));
-        return outputArr;
+        return outputArr.join("\n");
       }
       window.onload = function () {
         let container = document.getElementById("wrapper");
