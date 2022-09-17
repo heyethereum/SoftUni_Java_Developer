@@ -1,6 +1,6 @@
 function townPopulation(townData) {
   const display = townData.reduce((town, stringInput) => {
-    let temp = stringInput.split(" <-> ");
+    let [temp] = stringInput.split(" <-> ");
     town[temp[0]] = parseInt(town[temp[0]]) + parseInt(temp[1]) || temp[1];
 
     return town;
