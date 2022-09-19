@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <p>Welcome to your code playground!</p>
+    <button id="button">Click me</button>
+    <script>
+      function solve() {
+        let button = document.getElementById("button");
+
+        button.addEventListener("click", function (e) {
+          console.log(this);
+        });
+      }
+      solve(); // button object
+      console.log(this); // window object
+      /* ====================================================================================== */
+      function outer() {
+        console.log("outer function", this);
+        function inner() {
+          console.log("inner function", this);
+        }
+        inner();
+      }
+      const obj = { name: "Peter", func: outer };
+      obj.func();
+      /* ====================================================================================== */
+      let socialMediaUser = {
+        name: "John Doe",
+        pageLikes: [
+          "Cute Cats Page",
+          "Web Programming Gurus",
+          "SoftUni International",
+        ],
+        displayLikes: function () {
+          // inner function
+          this.pageLikes.forEach(function (page) {
+            console.log(`User: ${this.name} likes: ${page}`);
+          });
+        },
+        displayLikes2: function () {
+          // arrow function
+          this.pageLikes.forEach((page) => {
+            console.log(`User: ${this.name} likes: ${page}`);
+          });
+        },
+      };
+      socialMediaUser.displayLikes(); // this.name returns undefined as it refers to global obj
+      socialMediaUser.displayLikes2(); // this.name returns "John Doe"
+    </script>
+  </body>
+</html>
