@@ -6,9 +6,9 @@ function system(components) {
     return {
       ...mainObj,
       [systemName]: {
-        ...(mainObj[systemName] || {}),
+        ...(mainObj[systemName] ?? {}),
         [component]: [
-          ...(mainObj[systemName]?.[component] || []),
+          ...(mainObj[systemName]?.[component] ?? []),
           subComponent,
         ],
       },
